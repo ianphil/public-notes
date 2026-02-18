@@ -23,8 +23,21 @@ Selectively publish individual notes from the private repo without exposing its 
   git push public public-branch:main
   ```
 
+## Committing
+
+Always commit manually using the git CLI. **Never use `skill(commit)` or invoke the commit skill.**
+
+```sh
+git add -A
+git commit -m "Your message here"
+git push public public-branch:main
+```
+
+**Never** include a `Co-authored-by` trailer or any attribution to Copilot in commit messages.
+
 ## Rules
 
 - **Never** push `master` to the `public` remote.
 - Only push `public-branch` to the `public` remote.
 - Files here are hand-picked from the private repo — do not bulk-copy or expose unreviewed content.
+- **Never** use `skill(commit)` — commit manually with the git CLI as shown above.
