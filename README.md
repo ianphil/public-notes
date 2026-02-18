@@ -1,49 +1,49 @@
 # Notes
 
-Personal knowledge management using the IDEA method.
+These are my public notes — things I've chosen to share from my private knowledge base. The folder structure mirrors the IDEA system described below; not everything is public, just what I've decided is worth sharing.
 
-## Structure
+This repo is also a working example of how I manage notes privately and publish selectively. If you want to set up the same system yourself, see [The System](#the-system) below.
+
+## The System
+
+My notes live in a **private git repo** using the IDEA structure. I selectively publish notes here using a git worktree on an orphan branch — so this public repo shares none of the private repo's history.
+
+### IDEA Structure
 
 | Folder | Purpose |
 |--------|---------|
 | **I**nitiatives | Projects with a defined end goal |
-| **D**omains | Recurring areas of responsibility I manage |
-| **E**xpertise | Notes about things I learn |
+| **D**omains | Recurring areas of responsibility |
+| **E**xpertise | Notes on things I learn |
 | **A**rchive | Completed or inactive items |
-| Inbox | Quick capture for notes to classify later |
+| Inbox | Quick capture, triaged later |
 
-## Skills
+Not all folders will be present here — only what I've chosen to share publicly.
 
-Repo-local skills live in `.copilot/skills` and are designed to be context-aware for this vault.
+### Publishing Workflow
 
-**Meta skills** - Create folders and note templates for tracking:
-- `skill(meta-person) {name}` → creates `skill(person-{name})`
-- `skill(meta-domain) {name}` → creates `skill(domain-{name})`
-- `skill(meta-initiative) {name}` → creates `skill(initiative-{name})`
-- `skill(meta-expertise) {name}` → creates `skill(expertise-{name})`
+Notes move from private → public by cherry-picking individual files:
 
-**Quick capture:**
-- `skill(note) {target} {content}` → auto-routes to matching folder or inbox
+```sh
+# From within the public worktree
+git checkout master -- expertise/some-note.md
+git commit -m "Publish note on X"
+git push public public-branch:main
+```
 
-**Triage:**
-- `skill(inbox)` → list inbox contents
-- `skill(classify) {file} {type} {name}` → move inbox note to right place
+See [`expertise/git-orphan-branch-public-publishing.md`](expertise/git-orphan-branch-public-publishing.md) for the full setup guide.
 
-**Next actions:**
-- `skill(next-action) list inbox` → show untriaged actions
-- `skill(next-action) add initiative my-project Draft release notes` → add an action
-- `skill(next-action) done domain finances 2` → mark action #2 done
-- `skill(next-action) move 3 expertise rust` → move inbox action to a list
+### Automation with AI Skills
 
-**Links & Index:**
-- `skill(links)` → suggest wiki links for a note
-- `skill(links) {filepath}` → suggest links for specific note
-- `skill(vault-index)` → regenerate `vault-index.md` at the root
+The private repo uses repo-local skills (small AI instruction files) to automate common workflows:
 
-**Discovery:**
-- `skill(search) {query}` → search all notes
-- `skill(recent)` → show recently modified notes
+| Workflow | What it does |
+|----------|-------------|
+| Quick capture | Route a note to the right folder or inbox |
+| Triage | Classify inbox notes into IDEA folders |
+| Next actions | Manage per-initiative `next-actions.md` files |
+| Links | Suggest connections between notes |
+| Discovery | Search across the vault |
+| Lifecycle | Archive completed initiatives/domains |
 
-**Lifecycle:**
-- `skill(archive) {type} {name}` → move folder to Archive
-- `skill(ship)` → stage, commit, push
+The `.github/skills/` folder in this repo contains the skills I use — you can adapt them for your own setup with any AI coding assistant (GitHub Copilot, Claude, etc.).
