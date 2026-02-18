@@ -32,7 +32,7 @@ When `/note` is used:
    - Add the appropriate template and append the new entry.
    - Also create `next-actions.md` using the template below.
 5. If no clear target can be inferred:
-   - Put the note in `inbox/YYYYMMDD-HHMM-{slug}.md`, where `{slug}` is the first few words of the content, lowercased and hyphenated.
+   - Put the note in `inbox/{descriptive-slug}.md`, where `{slug}` is a short, descriptive, lowercase-hyphenated name derived from the content (e.g., `renew-ssl-cert.md`).
    - Use the Inbox template below (just the content).
 
 ## /inbox

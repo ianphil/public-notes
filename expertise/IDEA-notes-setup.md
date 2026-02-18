@@ -45,7 +45,7 @@ notes/
 │   └── docker-networking.md
 ├── Archive/
 ├── inbox/
-│   └── 20260218-1400-random-thought.md
+│   └── renew-ssl-cert.md
 ├── .github/
 │   ├── copilot-instructions.md
 │   └── skills/
@@ -144,7 +144,7 @@ This is a private notes vault using the IDEA method.
 | inbox/ | Quick capture, triaged later |
 
 ## Conventions
-- Notes use `YYYYMMDD-HHMM.md` timestamp naming by default
+- Notes use descriptive, lowercase-hyphenated filenames (e.g., `docker-networking.md`, `renew-ssl-cert.md`)
 - Each initiative/domain/expertise folder has a main note + `next-actions.md`
 - next-actions items use `- [ ]` for open and `- [x]` for done
 - Sections: `## Open` and `## Done` in next-actions.md
@@ -302,13 +302,13 @@ Just talk to Copilot. It routes notes to the right place:
 
 ```
 > note jane Had coffee, discussed the timeline for Q3
-  → domains/people/jane/20260218-1400.md
+  → appends to domains/people/jane/jane.md
 
 > note mobile-app Decided to use React Native for the prototype
-  → initiatives/mobile-app/20260218-1410.md
+  → appends to initiatives/mobile-app/mobile-app.md
 
 > note Remember to renew the SSL cert
-  → inbox/20260218-1420-renew-ssl-cert.md  (no match, lands in inbox)
+  → inbox/renew-ssl-cert.md  (no match, lands in inbox)
 ```
 
 ### Triage
@@ -318,14 +318,14 @@ Review what's accumulated in the inbox:
 ```
 > inbox
   3 notes waiting:
-  - 20260218-1420-renew-ssl-cert.md
-  - 20260217-0900-docker-tip.md
-  - 20260216-1600-budget-review.md
+  - renew-ssl-cert.md
+  - docker-tip.md
+  - budget-review.md
 
-> classify 20260217-0900-docker-tip.md expertise docker-networking
+> classify docker-tip.md expertise docker-networking
   → Moved to expertise/docker-networking.md
 
-> classify 20260216-1600-budget-review.md domain finances
+> classify budget-review.md domain finances
   → Moved to domains/finances/
 ```
 
