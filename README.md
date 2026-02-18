@@ -2,7 +2,7 @@
 
 These are my public notes — things I've chosen to share from my private knowledge base. The folder structure mirrors the IDEA system described below; not everything is public, just what I've decided is worth sharing.
 
-This repo is also a working example of how I manage notes privately and publish selectively. If you want to set up the same system yourself, see [The System](#the-system) below.
+This repo is also a working example of how I manage notes privately and publish selectively. If you want to set up the same system yourself, see the [full setup tutorial](expertise/IDEA-notes-setup.md) or fork the [IDEA-notes starter repo](https://github.com/ipdelete/IDEA-notes).
 
 ## The System
 
