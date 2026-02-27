@@ -2,7 +2,7 @@
 
 ## Repository Overview
 
-This directory (`C:\src\public-notes`) is a **git worktree** of the private repo at `C:\src\notes`, checked out on the orphan branch `public-branch`. It has no shared history with the private repo's `main` branch.
+This directory (`C:\src\public-notes`) is a **git worktree** of the private repo at `C:\src\miss-moneypenny`, checked out on the orphan branch `public-branch`. It has no shared history with the private repo's `master` branch.
 
 The remote `public` points to `git@github.com:ianphil/public-notes.git` (a public GitHub repo).
 

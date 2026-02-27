@@ -62,8 +62,8 @@ workiq ask -q "What meetings do I have scheduled for today?"
 
 Collect open next actions from the inbox and all active initiatives. Each `next-actions.md` file uses `## Open` / `## Done` sections with `- [ ]` (open) and `- [x]` (done) checkboxes.
 
-1. Read `C:\src\notes\inbox\next-actions.md` for untriaged actions
-2. List folders under `C:\src\notes\initiatives` to discover active initiatives
+1. Read `C:\src\miss-moneypenny\inbox\next-actions.md` for untriaged actions
+2. List folders under `C:\src\miss-moneypenny\initiatives` to discover active initiatives
 3. For each initiative folder, read its `next-actions.md` file
 4. Extract only `- [ ]` (open) items — skip done items
 5. Group open actions by source (inbox vs each initiative name)
@@ -72,9 +72,9 @@ Use parallel `view` calls to read all next-actions.md files at once for efficien
 
 ### Step 4: Review Inbox Notes
 
-Use the `view` tool to list files in `C:\src\notes\inbox` (excluding `next-actions.md` which was already read in Step 3).
+Use the `view` tool to list files in `C:\src\miss-moneypenny\inbox` (excluding `next-actions.md` which was already read in Step 3).
 
-1. List the inbox folder: `view` with path `C:\src\notes\inbox`
+1. List the inbox folder: `view` with path `C:\src\miss-moneypenny\inbox`
 2. For each markdown file (excluding next-actions.md and READ-THIS.md), read contents to identify action items or tasks
 3. Summarize any key items not already captured in next-actions
 

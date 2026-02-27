@@ -1,12 +1,18 @@
-# Notes
+# Public Notes
 
-These are my public notes — things I've chosen to share from my private knowledge base. The folder structure mirrors the IDEA system described below; not everything is public, just what I've decided is worth sharing.
+Selectively shared notes from [Miss Moneypenny](https://github.com/ianphil/miss-moneypenny) — an AI chief of staff built on GitHub Copilot. The private repo contains the full system; this repo shares the parts worth sharing.
 
-This repo is also a working example of how I manage notes privately and publish selectively. If you want to set up the same system yourself, see the [full setup tutorial](expertise/IDEA-notes-setup.md) or fork the [IDEA-notes starter repo](https://github.com/ipdelete/IDEA-notes).
+## What's Here
+
+| File | About |
+|------|-------|
+| [`expertise/building-a-chief-of-staff.md`](expertise/building-a-chief-of-staff.md) | Walkthrough: building a persistent, personable AI assistant with identity, memory, retrieval, and session continuity |
+| [`expertise/IDEA-notes-setup.md`](expertise/IDEA-notes-setup.md) | Tutorial: setting up IDEA-structured notes with git |
+| [`expertise/git-orphan-branch-public-publishing.md`](expertise/git-orphan-branch-public-publishing.md) | How to selectively publish from a private repo using orphan branches |
 
 ## The System
 
-My notes live in a **private git repo** using the IDEA structure. I selectively publish notes here using a git worktree on an orphan branch — so this public repo shares none of the private repo's history.
+These notes live in a **private git repo** using the IDEA structure. I selectively publish notes here using a git worktree on an orphan branch — so this public repo shares none of the private repo's history.
 
 ### IDEA Structure
 
@@ -32,18 +38,3 @@ git push public public-branch:main
 ```
 
 See [`expertise/git-orphan-branch-public-publishing.md`](expertise/git-orphan-branch-public-publishing.md) for the full setup guide.
-
-### Automation with AI Skills
-
-The private repo uses repo-local skills (small AI instruction files) to automate common workflows:
-
-| Workflow | What it does |
-|----------|-------------|
-| Quick capture | Route a note to the right folder or inbox |
-| Triage | Classify inbox notes into IDEA folders |
-| Next actions | Manage per-initiative `next-actions.md` files |
-| Links | Suggest connections between notes |
-| Discovery | Search across the vault |
-| Lifecycle | Archive completed initiatives/domains |
-
-The `.github/skills/` folder in this repo contains the skills I use — you can adapt them for your own setup with any AI coding assistant (GitHub Copilot, Claude, etc.).
