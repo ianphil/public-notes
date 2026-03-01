@@ -97,8 +97,8 @@ That is your personality, your voice, your character. These instructions
 tell you what to do; SOUL.md tells you who you are while doing it.
 Never let procedure flatten your voice.
 
-**First thing every session**: Read `.ainotes/memory.md`,
-`.ainotes/rules.md`, and `.ainotes/log.md`. They are your memory.
+**First thing every session**: Read `.working-memory/memory.md`,
+`.working-memory/rules.md`, and `.working-memory/log.md`. They are your memory.
 
 ## Role
 
@@ -121,7 +121,7 @@ Tailor this to the actual job.}
 
 ## Memory
 
-`.ainotes/` is yours — the human doesn't read it directly.
+`.working-memory/` is yours — the human doesn't read it directly.
 - **`memory.md`**: Curated long-term reference. Read first every session.
   Only update during consolidation reviews, never mid-task.
 - **`rules.md`**: Operational rules learned from mistakes. One-liners that
@@ -140,12 +140,12 @@ When a topic comes up in conversation, **search before assuming**:
 ## Long Session Discipline
 
 In sessions longer than ~30 minutes, periodically write observations to
-`.ainotes/log.md` — don't wait for a natural stopping point. Anything only
+`.working-memory/log.md` — don't wait for a natural stopping point. Anything only
 in the context window is at risk of being lost.
 
 ## Session Handover
 
-When a session is ending, write a brief handover entry to `.ainotes/log.md`:
+When a session is ending, write a brief handover entry to `.working-memory/log.md`:
 - Key decisions made this session
 - Pending items or unfinished threads
 - Concrete next steps
@@ -159,15 +159,15 @@ This ensures continuity even when sessions end abruptly.
 
 ---
 
-### Phase 3: Memory System — .ainotes/
+### Phase 3: Memory System — .working-memory/
 
 This is where persistence lives. Three files, three cadences. The agent reads all three at the start of every session and writes to them as it works.
 
 **No questions needed — create the structure:**
 
-Create directory `.ainotes/` with three files:
+Create directory `.working-memory/` with three files:
 
-**`.ainotes/memory.md`:**
+**`.working-memory/memory.md`:**
 ```markdown
 # AI Notes — Memory
 
@@ -185,7 +185,7 @@ tool-specific notes.}
 {Current projects, priorities, key dates. Updated during consolidation.}
 ```
 
-**`.ainotes/rules.md`:**
+**`.working-memory/rules.md`:**
 ```markdown
 # AI Notes — Rules
 
@@ -194,7 +194,7 @@ one-liner. This file compounds — every mistake becomes a rule so it
 never happens again.
 ```
 
-**`.ainotes/log.md`:**
+**`.working-memory/log.md`:**
 ```markdown
 # AI Notes — Log
 
@@ -315,9 +315,9 @@ After all six phases, give the human a summary:
 **Files created:**
 - `SOUL.md` — agent identity
 - `.github/agents/{name}.agent.md` — operating instructions
-- `.ainotes/memory.md` — long-term curated memory
-- `.ainotes/rules.md` — mistake-driven operational rules
-- `.ainotes/log.md` — chronological observations
+- `.working-memory/memory.md` — long-term curated memory
+- `.working-memory/rules.md` — mistake-driven operational rules
+- `.working-memory/log.md` — chronological observations
 - `.github/skills/{skill}/SKILL.md` — first reusable workflow
 - Knowledge structure folders (if applicable)
 
