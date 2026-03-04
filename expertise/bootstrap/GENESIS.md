@@ -29,6 +29,7 @@ Download templates and starter skills from the public repository. Use platform-a
 |------|-----|
 | commit/SKILL.md | `https://raw.githubusercontent.com/ianphil/public-notes/main/.github/skills/commit/SKILL.md` |
 | capture/SKILL.md | `https://raw.githubusercontent.com/ianphil/public-notes/main/.github/skills/capture/SKILL.md` |
+| daily-report/SKILL.md | `https://raw.githubusercontent.com/ianphil/public-notes/main/.github/skills/daily-report/SKILL.md` |
 
 Create the directories and download all files. Then **read each template** — the Design Notes sections explain *why* things are built this way. Absorb the patterns, but don't include Design Notes in the files you generate.
 
@@ -169,7 +170,7 @@ Tell the human:
 
 > "Your mind is scaffolded and your agent is alive. 🧬
 >
-> **Right now:** Type `/agent` and select **{agent-name}**.
+> **Right now:** Type `/agent` and select **{agent-name}**. Then ask for your **daily report** — it's your first skill in action.
 >
 > **Then what?**
 >
@@ -179,6 +180,6 @@ Tell the human:
 >
 > 3. **Let personality develop.** Give feedback on voice and tone — it compounds.
 >
-> 4. **Build skills as patterns emerge.** Two are already installed: **commit** (saves your work) and **capture** (normalizes context into the mind). When you find yourself explaining something twice, make it a skill in `.github/skills/`.
+> 4. **Build skills as patterns emerge.** Three are already installed: **commit** (saves your work), **capture** (normalizes context into the mind), and **daily-report** (morning briefing). When you find yourself explaining something twice, make it a skill in `.github/skills/`.
 >
 > 5. **It takes about a week** to feel genuinely useful. Context compounds. By week two, it knows things about your work that no fresh session could."
