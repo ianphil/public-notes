@@ -21,9 +21,9 @@ The heartbeat primes the morning briefing — its findings get incorporated into
 ### Create the Task
 
 ```powershell
-# Create 5 hourly triggers (11 AM – 3 PM ET, weekdays)
+# Create 7 hourly triggers (10 AM – 4 PM ET, weekdays)
 $triggers = @()
-foreach ($hour in 11..15) {
+foreach ($hour in 10..16) {
     $triggers += New-ScheduledTaskTrigger `
         -Weekly -DaysOfWeek Monday,Tuesday,Wednesday,Thursday,Friday `
         -At "${hour}:00"
@@ -49,8 +49,8 @@ Register-ScheduledTask `
 
 ### Schedule
 
-- **When:** 11:00 AM, 12:00 PM, 1:00 PM, 2:00 PM, 3:00 PM ET — weekdays
-- **Frequency:** 5 runs per workday, hourly during core hours
+- **When:** 10:00 AM – 4:00 PM ET — weekdays (bookend runs added for morning ramp-up and afternoon wrap)
+- **Frequency:** 7 runs per workday, hourly during extended core hours
 - **RunAs:** Current user
 - **DaysOfWeek value:** 62 (Mon–Fri)
 
@@ -59,8 +59,8 @@ Register-ScheduledTask `
 ```bash
 crontab -e
 
-# Hourly 11 AM–3 PM ET (16:00–20:00 UTC during EST, 15:00–19:00 UTC during EDT)
-0 16-20 * * 1-5 cd /home/$USER/src/miss-moneypenny && pwsh -NoProfile -ExecutionPolicy Bypass -File .github/scripts/heartbeat.ps1 >> /tmp/moneypenny-heartbeat.log 2>&1
+# Hourly 10 AM–4 PM ET (15:00–21:00 UTC during EST, 14:00–20:00 UTC during EDT)
+0 15-21 * * 1-5 cd /home/$USER/src/miss-moneypenny && pwsh -NoProfile -ExecutionPolicy Bypass -File .github/scripts/heartbeat.ps1 >> /tmp/moneypenny-heartbeat.log 2>&1
 ```
 
 **Note:** The heartbeat is lightweight (mind-only) and works on any machine with the repo and Copilot CLI. Good candidate for running on the Linux machine too.
@@ -73,10 +73,20 @@ The heartbeat checks `.working-memory/heartbeat-tasks.md` each run for queued wo
 
 | Task | Trigger | Cooldown |
 |------|---------|----------|
-| Mind-index refresh | >5 new/moved/archived files | 7 days |
-| Memory consolidation | log.md >150 lines or >14 days | 14 days |
-| Stale item scan | Always | 7 days |
+| Mind-index refresh | >5 new/moved/archived files since last refresh | 7 days |
+| Memory consolidation | log.md >150 lines OR >14 days OR 3+ major decisions/new initiatives (density trigger) | 14 days |
+| Stale item scan | Always — multi-dimensional sweep (see below) | 7 days |
+| Inbox triage | >5 items in inbox/ OR any inbox item >7 days old | 7 days |
+| Initiative lifecycle | Any initiative with empty next-actions AND no file modified >21 days | 14 days |
 | 1:1 prep | Calendar has direct report meeting | Daily |
+| Notes inbox | New message from human addressed to agent in personal chat | Every run |
+
+**Stale item scan dimensions** — goes beyond simple time-based staleness:
+- **Next-actions:** Sweep all `next-actions.md` files. Flag items >14 days untouched. Check for cross-initiative dependency conflicts.
+- **Count-based accumulation:** Inbox >5 items means the pass-through is becoming a parking lot.
+- **Density-based drift:** Dense weeks (3+ major decisions) outpace the normal consolidation cadence — trigger early.
+- **Structural consistency:** Mind-index validation — do all indexed paths resolve? Do all `.md` files have an entry? Broken links, orphaned references.
+- **Lifecycle drift:** Initiatives with empty next-actions AND no file modified in 21+ days get flagged for archival. Parked is fine; invisible is not.
 
 ### Queue (one-shot)
 
@@ -91,14 +101,15 @@ Either Ian or Moneypenny can add items to the queue. The heartbeat picks 1-2 per
 - ✅ Mind operations: reorganize notes, archive, fix links, update mind-index, memory maintenance
 - ✅ ADO read-only: query work items, check for stale/aging items
 - ✅ GitHub read + close issues (e.g., importing misplaced issues to inbox)
-- ❌ No ADO writes, no emails, no Teams messages, no git push
+- ✅ Personal Notes chat: read for tasks from human, post summaries and acknowledgments
+- ❌ No ADO writes, no emails, no other Teams chats, no git push
 
 ## Verification
 
 After setup, confirm:
 
 1. `Get-ScheduledTask -TaskName "MoneypennyHeartbeat"` shows **Ready**
-2. All 5 triggers listed with correct times and days
+2. All 7 triggers listed with correct times and days
 3. Working directory and script path are correct
 4. Run manually: `pwsh -NoProfile -ExecutionPolicy Bypass -File .github/scripts/heartbeat.ps1`
 5. Check `.working-memory/heartbeat.md` exists with today's scan
