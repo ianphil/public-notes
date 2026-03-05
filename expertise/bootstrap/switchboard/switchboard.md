@@ -4,6 +4,15 @@ The Switchboard gives your AI Chief of Staff a **Teams inbox**. It monitors chan
 
 This pairs with the [Heartbeat](heartbeat.md) (ambient mind scan) and [Morning Briefing](morning-briefing.md) (daily report). Together they form the agent's autonomous loop: the briefing sets context, the heartbeat watches the mind, and the switchboard watches the world.
 
+## Prerequisites
+
+> **Start here first:** [MCPorter + Agency Bootstrap](../mcporter-agency.md) — install Agency, configure MCPorter, and verify Teams access before setting up the Switchboard.
+
+- MCPorter configured with Teams access (see link above)
+- Copilot CLI (`copilot` command available)
+- Your agent configured as a copilot agent (e.g., `--agent my-cos`)
+- Windows Task Scheduler (or cron on Linux/macOS)
+
 ## Architecture
 
 ```
@@ -41,13 +50,6 @@ This pairs with the [Heartbeat](heartbeat.md) (ambient mind scan) and [Morning B
 | `switchboard-tasks.ps1` | `.github/scripts/` | Fetch layer — MCPorter + filter + state |
 | `switchboard-agents.json` | `.github/scripts/` | Agent registry — who's a CoS vs. a human |
 | `switchboard-state.json` | `.working-memory/` | Runtime state — last-seen message ID per channel |
-
-## Prerequisites
-
-- [MCPorter CLI](https://github.com/nicholasgasior/mcporter) configured with Teams access
-- Copilot CLI (`copilot` command available)
-- Your agent configured as a copilot agent (e.g., `--agent my-cos`)
-- Windows Task Scheduler (or cron on Linux/macOS)
 
 ## Setup
 
